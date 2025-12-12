@@ -1,0 +1,950 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Natalia Valderrama | Product Manager</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #475569;
+            --primary-dark: #334155;
+            --accent: #64748b;
+            --accent-light: #94a3b8;
+            --cyan: #0ea5e9;
+            --dark: #0f172a;
+            --gray: #64748b;
+            --light-gray: #f1f5f9;
+            --border: #e2e8f0;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #f8fafc 0%, #e0e7ff 100%);
+            color: var(--dark);
+            line-height: 1.6;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            background: white;
+            min-height: 100vh;
+        }
+
+        /* Modern Sidebar Header */
+        .header-wrapper {
+            display: grid;
+            grid-template-columns: 280px 1fr;
+            min-height: 220px;
+        }
+
+        .sidebar {
+            background: linear-gradient(180deg, rgba(71, 85, 105, 0.85) 0%, rgba(51, 65, 85, 0.9) 100%);
+            padding: 35px 28px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .sidebar::before {
+            content: '';
+            position: absolute;
+            top: -100px;
+            right: -100px;
+            width: 250px;
+            height: 250px;
+            background: radial-gradient(circle, rgba(255,255,255,0.15) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+
+        .sidebar::after {
+            content: '';
+            position: absolute;
+            bottom: -80px;
+            left: -80px;
+            width: 200px;
+            height: 200px;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+
+        .profile-section {
+            position: relative;
+            z-index: 1;
+        }
+
+        .name-title h1 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: white;
+            margin-bottom: 6px;
+            line-height: 1.1;
+        }
+
+        .name-title .title {
+            font-size: 1rem;
+            color: rgba(255,255,255,0.9);
+            font-weight: 500;
+            margin-bottom: 22px;
+        }
+
+        .contact-list {
+            list-style: none;
+        }
+
+        .contact-list li {
+            color: rgba(255,255,255,0.95);
+            font-size: 0.85rem;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: transform 0.2s;
+        }
+
+        .contact-list li:hover {
+            transform: translateX(3px);
+        }
+
+        .contact-list li a {
+            color: rgba(255,255,255,0.95);
+            text-decoration: none;
+        }
+
+        .contact-list li a:hover {
+            color: white;
+        }
+
+        .main-header {
+            padding: 35px 40px 30px;
+            background: white;
+            position: relative;
+        }
+
+        .header-accent {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary) 0%, var(--accent) 50%, var(--cyan) 100%);
+        }
+
+        .tagline {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.6rem;
+            font-weight: 600;
+            color: var(--dark);
+            margin-bottom: 12px;
+            line-height: 1.25;
+        }
+
+        .highlight {
+            color: var(--primary);
+        }
+
+        .subtitle {
+            color: var(--gray);
+            font-size: 0.98rem;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .highlights-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .highlight-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px 15px;
+            background: var(--light-gray);
+            border-radius: 8px;
+            border-left: 3px solid var(--primary);
+            transition: all 0.3s;
+        }
+
+        .highlight-item:nth-child(2) {
+            border-left-color: var(--accent);
+        }
+
+        .highlight-item:nth-child(3) {
+            border-left-color: var(--cyan);
+        }
+
+        .highlight-item:hover {
+            background: #e0e7ff;
+            transform: translateX(3px);
+        }
+
+        .highlight-icon {
+            font-size: 1.3rem;
+        }
+
+        .highlight-text {
+            font-size: 0.85rem;
+            color: var(--dark);
+            font-weight: 500;
+        }
+
+        /* Main Content */
+        .content {
+            padding: 50px;
+        }
+
+        .section {
+            margin-bottom: 50px;
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+
+        .section-number {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1rem;
+            font-weight: 700;
+            color: white;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+            width: 35px;
+            height: 35px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .section-title {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--dark);
+        }
+
+        /* Summary Box */
+        .summary-box {
+            background: linear-gradient(135deg, #f0f9ff 0%, #e0e7ff 100%);
+            border-left: 4px solid var(--primary);
+            padding: 25px;
+            border-radius: 12px;
+            font-size: 1.05rem;
+            line-height: 1.8;
+            color: #334155;
+        }
+
+        .summary-box strong {
+            color: var(--primary-dark);
+            font-weight: 600;
+        }
+
+        /* Experience Timeline */
+        .timeline {
+            position: relative;
+            padding-left: 40px;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 10px;
+            bottom: 10px;
+            width: 2px;
+            background: linear-gradient(180deg, var(--primary) 0%, var(--accent) 50%, var(--cyan) 100%);
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 35px;
+            background: white;
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 25px;
+            transition: all 0.3s ease;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -48px;
+            top: 25px;
+            width: 16px;
+            height: 16px;
+            background: white;
+            border: 3px solid var(--primary);
+            border-radius: 50%;
+            box-shadow: 0 0 0 4px white;
+        }
+
+        .timeline-item:hover {
+            border-color: var(--primary);
+            box-shadow: 0 10px 40px rgba(99,102,241,0.15);
+            transform: translateX(5px);
+        }
+
+        .timeline-item.collapsed .item-content {
+            max-height: 0;
+            opacity: 0;
+            margin-top: 0;
+            overflow: hidden;
+        }
+
+        .item-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: start;
+            margin-bottom: 15px;
+            cursor: pointer;
+            gap: 20px;
+        }
+
+        .item-title h3 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.2rem;
+            color: var(--dark);
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+
+        .company {
+            color: var(--primary);
+            font-weight: 500;
+            font-size: 1.05rem;
+        }
+
+        .item-meta {
+            text-align: right;
+            flex-shrink: 0;
+        }
+
+        .date-badge {
+            background: linear-gradient(135deg, var(--accent) 0%, var(--accent-light) 100%);
+            color: white;
+            padding: 6px 12px;
+            border-radius: 6px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            display: inline-block;
+            margin-bottom: 5px;
+        }
+
+        .location {
+            font-size: 0.9rem;
+            color: var(--gray);
+        }
+
+        .toggle-icon {
+            display: none;
+        }
+
+        .item-content {
+            max-height: 2000px;
+            opacity: 1;
+            margin-top: 15px;
+            transition: all 0.4s ease;
+        }
+
+        .item-content ul {
+            list-style: none;
+        }
+
+        .item-content li {
+            padding: 10px 0 10px 25px;
+            position: relative;
+            color: #475569;
+            font-size: 0.95rem;
+            line-height: 1.7;
+            border-bottom: 1px solid var(--light-gray);
+        }
+
+        .item-content li:last-child {
+            border-bottom: none;
+        }
+
+        .item-content li::before {
+            content: '▸';
+            position: absolute;
+            left: 0;
+            color: var(--accent);
+            font-weight: bold;
+        }
+
+        /* Skills Grid */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+        }
+
+        .skill-card {
+            background: white;
+            border: 2px solid var(--border);
+            border-radius: 12px;
+            padding: 25px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .skill-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary) 0%, var(--accent) 100%);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.3s ease;
+        }
+
+        .skill-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .skill-card:hover {
+            border-color: var(--primary);
+            box-shadow: 0 12px 40px rgba(99,102,241,0.2);
+            transform: translateY(-5px);
+        }
+
+        .skill-card:nth-child(2)::before {
+            background: linear-gradient(90deg, var(--accent) 0%, var(--accent-light) 100%);
+        }
+
+        .skill-card:nth-child(3)::before {
+            background: linear-gradient(90deg, var(--cyan) 0%, var(--primary) 100%);
+        }
+
+        .skill-card h3 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.1rem;
+            color: var(--dark);
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        .skill-card ul {
+            list-style: none;
+        }
+
+        .skill-card li {
+            padding: 8px 0;
+            color: #475569;
+            font-size: 0.92rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .skill-card li::before {
+            content: '✓';
+            color: var(--primary);
+            font-weight: bold;
+            font-size: 1.1rem;
+        }
+
+        .skill-card:nth-child(2) li::before {
+            color: var(--accent);
+        }
+
+        .skill-card:nth-child(3) li::before {
+            color: var(--cyan);
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 30px;
+            color: var(--gray);
+            font-size: 0.9rem;
+            border-top: 1px solid var(--border);
+        }
+
+        /* Responsive */
+        @media (max-width: 968px) {
+            .header-wrapper {
+                grid-template-columns: 1fr;
+            }
+
+            .sidebar {
+                padding: 30px 25px;
+            }
+
+            .name-title h1 {
+                font-size: 1.6rem;
+            }
+
+            .main-header {
+                padding: 30px 25px 25px;
+            }
+
+            .tagline {
+                font-size: 1.4rem;
+            }
+
+            .subtitle {
+                font-size: 0.92rem;
+            }
+
+            .highlights-grid {
+                grid-template-columns: 1fr;
+                gap: 10px;
+            }
+
+            .content {
+                padding: 35px 25px;
+            }
+
+            .timeline {
+                padding-left: 25px;
+            }
+
+            .timeline-item::before {
+                left: -33px;
+            }
+
+            .item-header {
+                flex-direction: column;
+            }
+
+            .item-meta {
+                text-align: left;
+            }
+
+            .timeline-item {
+                padding: 20px;
+            }
+
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .section-header {
+                gap: 12px;
+            }
+
+            .section-title {
+                font-size: 1.3rem;
+            }
+        }
+
+        @media (max-width: 640px) {
+            body {
+                font-size: 15px;
+            }
+
+            .sidebar {
+                padding: 25px 20px;
+            }
+
+            .name-title h1 {
+                font-size: 1.5rem;
+            }
+
+            .name-title .title {
+                font-size: 0.95rem;
+                margin-bottom: 18px;
+            }
+
+            .contact-list li {
+                font-size: 0.8rem;
+                margin-bottom: 8px;
+            }
+
+            .main-header {
+                padding: 25px 20px 20px;
+            }
+
+            .tagline {
+                font-size: 1.2rem;
+                line-height: 1.3;
+            }
+
+            .subtitle {
+                font-size: 0.88rem;
+            }
+
+            .highlights-grid {
+                gap: 8px;
+            }
+
+            .highlight-item {
+                padding: 10px 12px;
+            }
+
+            .highlight-icon {
+                font-size: 1.1rem;
+            }
+
+            .highlight-text {
+                font-size: 0.8rem;
+            }
+
+            .content {
+                padding: 30px 20px;
+            }
+
+            .section {
+                margin-bottom: 40px;
+            }
+
+            .section-number {
+                width: 30px;
+                height: 30px;
+                font-size: 0.9rem;
+            }
+
+            .section-title {
+                font-size: 1.2rem;
+            }
+
+            .summary-box {
+                padding: 20px;
+                font-size: 0.95rem;
+            }
+
+            .timeline {
+                padding-left: 20px;
+            }
+
+            .timeline-item {
+                padding: 18px;
+                margin-bottom: 25px;
+            }
+
+            .timeline-item::before {
+                left: -28px;
+                width: 12px;
+                height: 12px;
+            }
+
+            .item-title h3 {
+                font-size: 1.1rem;
+            }
+
+            .company {
+                font-size: 0.95rem;
+            }
+
+            .date-badge {
+                font-size: 0.8rem;
+                padding: 5px 10px;
+            }
+
+            .location {
+                font-size: 0.85rem;
+            }
+
+            .item-content li {
+                font-size: 0.9rem;
+                padding: 8px 0 8px 22px;
+            }
+
+            .skill-card {
+                padding: 20px;
+            }
+
+            .skill-card h3 {
+                font-size: 1rem;
+            }
+
+            .skill-card li {
+                font-size: 0.88rem;
+            }
+
+            .footer {
+                padding: 25px 20px;
+                font-size: 0.85rem;
+            }
+        }
+
+        @media print {
+            body {
+                background: white;
+            }
+
+            .header-wrapper {
+                page-break-after: avoid;
+            }
+
+            .sidebar::before,
+            .sidebar::after {
+                display: none;
+            }
+
+            .section {
+                page-break-inside: avoid;
+            }
+
+            .timeline-item {
+                page-break-inside: avoid;
+            }
+
+            .timeline-item:hover {
+                transform: none;
+                box-shadow: none;
+            }
+
+            .skill-card:hover {
+                transform: none;
+                box-shadow: none;
+            }
+
+            .item-content {
+                max-height: none !important;
+                opacity: 1 !important;
+            }
+
+            .timeline-item.collapsed .item-content {
+                max-height: none !important;
+                opacity: 1 !important;
+            }
+        }
+    </style>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Collapsible experience items
+            const itemHeaders = document.querySelectorAll('.item-header');
+            
+            itemHeaders.forEach(header => {
+                header.addEventListener('click', function() {
+                    const item = this.closest('.timeline-item');
+                    const toggle = item.querySelector('.toggle-icon');
+                    
+                    item.classList.toggle('collapsed');
+                    toggle.textContent = item.classList.contains('collapsed') ? '▼' : '▲';
+                });
+            });
+        });
+    </script>
+</head>
+<body>
+    <div class="container">
+        
+        <!-- Modern Split Header -->
+        <div class="header-wrapper">
+            <div class="sidebar">
+                <div class="profile-section">
+                    <div class="name-title">
+                        <h1>Natalia<br>Valderrama</h1>
+                        <div class="title">Product Manager</div>
+                    </div>
+                    <ul class="contact-list">
+                        <li>
+                            <span>📧</span>
+                            <a href="/cdn-cgi/l/email-protection#016f6075606d68602f77606d65647373606c60393841696e756c60686d2f626e6c"><span class="__cf_email__" data-cfemail="2846495c49444149065e49444c4d5a5a49454910116840475c45494144064b4745">[email&#160;protected]</span></a>
+                        </li>
+                        <li>
+                            <span>📱</span>
+                            <span>786-643-5454</span>
+                        </li>
+                        <li>
+                            <span>📍</span>
+                            <span>West Palm Beach, FL</span>
+                        </li>
+                        <li>
+                            <span>💼</span>
+                            <a href="https://www.linkedin.com/in/natalia-valderrama-0bb57585" target="_blank">LinkedIn Profile</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="main-header">
+                <h2 class="tagline">
+                    Building <span class="highlight">fintech products</span> that drive<br>engagement & growth
+                </h2>
+                <p class="subtitle">
+                    Specializing in cross-functional leadership, international expansion, and data-driven product strategy
+                </p>
+                <div class="highlights-grid">
+                    <div class="highlight-item">
+                        <span class="highlight-icon">🌎</span>
+                        <span class="highlight-text">International Expansion</span>
+                    </div>
+                    <div class="highlight-item">
+                        <span class="highlight-icon">📊</span>
+                        <span class="highlight-text">Data-Driven Strategy</span>
+                    </div>
+                    <div class="highlight-item">
+                        <span class="highlight-icon">🚀</span>
+                        <span class="highlight-text">Product Lifecycle</span>
+                    </div>
+                </div>
+                <div class="header-accent"></div>
+            </div>
+        </div>
+
+        <!-- Main Content -->
+        <div class="content">
+            
+            <!-- Professional Summary -->
+            <section class="section">
+                <div class="section-header">
+                    <div class="section-number">01</div>
+                    <h2 class="section-title">Professional Summary</h2>
+                </div>
+                <div class="summary-box">
+                    <strong>Product Manager specializing in Fintech</strong> with extensive experience building and launching digital products in fast-paced, regulated environments. Proven track record of <strong>leading international expansion</strong> (Colombia operations), collaborating with sponsor banks and vendors, and driving cross-functional teams to deliver user-centric solutions. Expert in translating complex business requirements into actionable product roadmaps, managing end-to-end product lifecycles, and leveraging data-driven insights to optimize engagement and conversion. Skilled in Agile methodologies, stakeholder management, and bridging technical and business teams to achieve strategic objectives.
+                </div>
+            </section>
+
+            <!-- Professional Experience -->
+            <section class="section">
+                <div class="section-header">
+                    <div class="section-number">02</div>
+                    <h2 class="section-title">Professional Experience</h2>
+                </div>
+
+                <div class="timeline">
+                    
+                    <div class="timeline-item">
+                        <div class="item-header">
+                            <span class="toggle-icon">▲</span>
+                            <div class="item-title">
+                                <h3>Product Manager</h3>
+                                <div class="company">MyBambu</div>
+                            </div>
+                            <div class="item-meta">
+                                <div class="date-badge">Aug 2024 - Present</div>
+                                <div class="location">West Palm Beach, FL</div>
+                            </div>
+                        </div>
+                        <div class="item-content">
+                            <ul>
+                                <li>Led the strategic planning and execution for opening new operations in Colombia, coordinating cross-functional teams and establishing operational frameworks</li>
+                                <li>Collaborate directly with sponsor bank in Colombia, vendors, and third-party partners to ensure regulatory compliance and seamless integration of financial services</li>
+                                <li>Partner with UI/UX teams to ensure user-centric design and seamless customer journeys across web and mobile platforms</li>
+                                <li>Translate complex business requirements into clear, actionable product specifications and technical documentation for development teams</li>
+                                <li>Collaborate with the President of Operations to prioritize product roadmap features, refine operational processes, and support strategic growth initiatives</li>
+                                <li>Lead product discovery sessions to identify user pain points and define feature requirements through data analysis and user research</li>
+                                <li>Manage end-to-end product launch cycles, from initial concept through development, QA, and market release</li>
+                                <li>Coordinate with Engineering, QA, Marketing, and Compliance teams to ensure successful feature rollouts that drive engagement and conversion</li>
+                                <li>Define and track key product metrics (KPIs) to measure feature success and inform data-driven product decisions</li>
+                                <li>Facilitate sprint planning, backlog grooming, and release coordination using Agile methodologies</li>
+                                <li>Create comprehensive product documentation including PRDs, user stories, acceptance criteria, and concept documents</li>
+                                <li>Utilize Figma for design collaboration and SharePoint/Notion for product documentation and knowledge management</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="item-header">
+                            <span class="toggle-icon">▲</span>
+                            <div class="item-title">
+                                <h3>Social Media Strategist</h3>
+                                <div class="company">MyBambu</div>
+                            </div>
+                            <div class="item-meta">
+                                <div class="date-badge">Nov 2021 - Aug 2024</div>
+                                <div class="location">West Palm Beach, FL</div>
+                            </div>
+                        </div>
+                        <div class="item-content">
+                            <ul>
+                                <li>Managed, created and published original, high-quality content across all company social media channels</li>
+                                <li>Collaborated with writers and designers to ensure content was appealing and informative for target audiences</li>
+                                <li>Designed comprehensive social media strategies to achieve marketing targets and brand awareness goals</li>
+                                <li>Administered all company social media accounts ensuring up-to-date, engaging content</li>
+                                <li>Applied communication, copywriting, and digital marketing skills to drive social engagement</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="item-header">
+                            <span class="toggle-icon">▲</span>
+                            <div class="item-title">
+                                <h3>Marketing & Media Internee</h3>
+                                <div class="company">Saudi Basic Technology Company (Sabtech)</div>
+                            </div>
+                            <div class="item-meta">
+                                <div class="date-badge">Aug 2016 - Jul 2017</div>
+                                <div class="location">Dubai, UAE</div>
+                            </div>
+                        </div>
+                        <div class="item-content">
+                            <ul>
+                                <li>Achieved strong, visible social media presence and developed concepts with viral potential</li>
+                                <li>Continuously monitored online public relations and ensured success of client programs</li>
+                                <li>Created vibrant social media profiles including Facebook and Twitter to drive website traffic</li>
+                                <li>Designed catalogues and modified existing designs for marketing materials</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                </div>
+            </section>
+
+            <!-- Core Competencies -->
+            <section class="section">
+                <div class="section-header">
+                    <div class="section-number">03</div>
+                    <h2 class="section-title">Core Competencies</h2>
+                </div>
+
+                <div class="skills-grid">
+                    
+                    <div class="skill-card">
+                        <h3>Product Management</h3>
+                        <ul>
+                            <li>Product Requirements Gathering</li>
+                            <li>BRD & TDD Writing</li>
+                            <li>PRDs & User Stories</li>
+                            <li>Roadmapping & Prioritization</li>
+                            <li>Feature Scoping & Refinement</li>
+                            <li>Cross-functional Leadership</li>
+                        </ul>
+                    </div>
+
+                    <div class="skill-card">
+                        <h3>Tools & Platforms</h3>
+                        <ul>
+                            <li>Jira & Confluence</li>
+                            <li>Monday.com</li>
+                            <li>Figma</li>
+                            <li>SharePoint & Notion</li>
+                            <li>BI Dashboards & KPI Tracking</li>
+                            <li>Slack Communication</li>
+                        </ul>
+                    </div>
+
+                    <div class="skill-card">
+                        <h3>Technical & Execution</h3>
+                        <ul>
+                            <li>API Integration</li>
+                            <li>Sprint Planning & Grooming</li>
+                            <li>QA & UAT Coordination</li>
+                            <li>Regression Testing Oversight</li>
+                            <li>Issue Triage & Bug Management</li>
+                            <li>Release Coordination</li>
+                        </ul>
+                    </div>
+
+                </div>
+            </section>
+
+        </
